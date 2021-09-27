@@ -7,19 +7,21 @@ const Notes = () => {
 
     return (
         <>
-         <div class="place-items-center">
-         <div class="flex place-content-center">
-          <h1 className="text-blue-400">To Do List</h1>
-        </div>
+         <div class="justify-center items-centers">
 
-        {notes.length === 0 ? (
-              <h2 class=""></h2>
-          ) : (
-              notes.map((note) => <Note key={note.id} note={note} />)
-          )}
+            {notes.length === 0 ? (
+                <h2 class=""></h2>
+            ) : (
+                notes.map((note) => <Note key={note.id} note={note} />)
+            )
+            
+            }
+            
         </div>
           
         </>
+        
     );
 };
+
 export default Notes;
