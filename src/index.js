@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Notes from './components/Notes';
+import NotesForm from './components/NotesForm';
+import { StoreProvider, createStore } from "easy-peasy";
+import store from "./Store";
+import reactDom from 'react-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const Store = createStore(store);
+function App() {
+  return (
+    <StoreProvider store={Store}>
+      <div className="container">
+        <NotesForm />
+        <Notes />
+      </div>
+    </StoreProvider>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const rootElement = document.getElementById("root");
+reactDom.render(<App />, rootElement);
